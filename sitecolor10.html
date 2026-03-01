@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ionita Currency Premium | Financial Excellence</title>
+    <style>
+        :root {
+            --gold: #d4af37;
+            --royal-blue: #003366;
+            --text-dark: #1a1a1a;
+            --glass-light: rgba(255, 255, 255, 0.9);
+        }
+
+        body {
+            background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), 
+                        url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-dark);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            background: var(--glass-light);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 40px;
+            border-radius: 4px;
+            width: 90%;
+            max-width: 460px;
+            border-top: 6px solid var(--royal-blue);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        /* LOGO INTERACTIV - ROTAȚIE */
+        .logo-box {
+            width: 80px; height: 80px;
+            background: var(--royal-blue);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            border: 2px solid var(--gold);
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            perspective: 1000px;
+        }
+        
+        .logo-box:hover {
+            transform: rotateY(360deg);
+        }
+
+        .logo-text { color: var(--gold); font-weight: bold; font-size: 20px; }
+        .bow-tie { width: 32px; fill: var(--gold); margin-top: 2px; }
+
+        h1 { text-align: center; margin: 0; font-size: 24px; letter-spacing: 3px; text-transform: uppercase; color: var(--royal-blue); }
+        .subtitle { text-align: center; color: var(--gold); font-size: 10px; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 30px; font-weight: bold; }
+
+        .input-group { margin-bottom: 20px; }
+        label { display: block; font-size: 10px; margin-bottom: 8px; color: #555; font-weight: bold; text-transform: uppercase; }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            border: 1px solid #ccc;
+            color: var(--text-dark);
+            font-size: 14px;
+            box-sizing: border-box;
+            outline: none;
+            transition: 0.3s;
+        }
+        input:focus { border-color: var(--gold); border-width: 1.5px; }
+
+        .row { display: flex; align-items: center; gap: 15px; }
+        .swap-btn { font-size: 26px; cursor: pointer; color: var(--gold); margin-top: 15px; transition: 0.3s; user-select: none; }
+        .swap-btn:hover { color: var(--royal-blue); transform: scale(1.1); }
+
+        .result-box {
+            background: white;
+            padding: 25px;
+            text-align: center;
+            margin: 25px 0;
+            border: 1px solid #eee;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        #result { font-size: 34px; font-weight: 300; color: var(--royal-blue); display: block; }
+        #rate { font-size: 11px; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin-top: 8px; }
+
+        button {
+            width: 100%; padding: 18px;
+            background: var(--royal-blue);
+            border: none; color: white;
+            font-weight: bold; letter-spacing: 2px;
+            cursor: pointer; text-transform: uppercase;
+            transition: 0.3s;
+        }
+        button:hover { background: #002244; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        .footer-note { text-align: center; font-size: 9px; color: #888; margin-top: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="logo-box">
+        <span class="logo-text">IC</span>
+        <svg class="bow-tie" viewBox="0 0 512 512"><path d="M121 160c-25.5 0-46.7 16.9-53.8 40H32c-17.7 0-32 14.3-32 32v48c0 17.7 14.3 32 32 32h35.2c7.1 23.1 28.3 40 53.8 40 30.4 0 55-24.6 55-55v-82c0-30.4-24.6-55-55-55zm270 0c-30.4 0-55 24.6-55 55v82c0 30.4 24.6 55 55 55 25.5 0 46.7-16.9 53.8-40H480c17.7 0 32-14.3 32-32v-48c0-17.7-14.3-32-32-32h-35.2c-7.1-23.1-28.3-40-53.8-40zM256 208c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48z"/></svg>
+    </div>
+
+    <h1>Ionita Currency</h1>
+    <p class="subtitle">Excellence in Exchange</p>
+
+    <div class="input-group">
+        <label>Suma Capitalizată</label>
+        <input type="number" id="amount" value="100">
+    </div>
+
+    <div class="row">
+        <div style="flex: 1;">
+            <label>Din Moneda</label>
+            <input list="currencies" id="fromInput" placeholder="Ex: EUR">
+        </div>
+        <div class="swap-btn" id="swap">⇆</div>
+        <div style="flex: 1;">
+            <label>În Moneda</label>
+            <input list="currencies" id="toInput" placeholder="Ex: RON">
+        </div>
+    </div>
+
+    <datalist id="currencies"></datalist>
+
+    <div class="result-box">
+        <span id="result">---</span>
+        <span id="rate">Sincronizare Piață...</span>
+    </div>
+
+    <button id="btn">Actualizează Cursul</button>
+    <div class="footer-note" id="updateDate">Sursă: BCE | Ultima actualizare a cursului: --.--.----</div>
+</div>
+
+<script>
+    const currencyDetails = {
+        "AUD": "Australia", "BGN": "Bulgaria", "BRL": "Brazilia", "CAD": "Canada",
+        "CHF": "Elveția", "CNY": "China", "CZK": "Cehia", "DKK": "Danemarca",
+        "EUR": "Uniunea Europeană", "GBP": "Marea Britanie", "HKD": "Hong Kong",
+        "HUF": "Ungaria", "ILS": "Israel", "INR": "India", "ISK": "Islanda",
+        "JPY": "Japonia", "KRW": "Coreea de Sud", "MXN": "Mexic", "MYR": "Malaezia",
+        "NOK": "Norvegia", "NZD": "Noua Zeelandă", "PHP": "Filipine", "PLN": "Polonia",
+        "RON": "România", "RUB": "Rusia", "SEK": "Suedia", "SGD": "Singapore",
+        "THB": "Thailanda", "TRY": "Turcia", "USD": "SUA", "ZAR": "Africa de Sud"
+    };
+
+    const fromInp = document.getElementById('fromInput');
+    const toInp = document.getElementById('toInput');
+    const datalist = document.getElementById('currencies');
+    const amtInp = document.getElementById('amount');
+    const resDisp = document.getElementById('result');
+    const rateDisp = document.getElementById('rate');
+    const dateDisp = document.getElementById('updateDate');
+
+    function init() {
+        Object.keys(currencyDetails).sort().forEach(code => {
+            const option = document.createElement('option');
+            option.value = code;
+            option.innerText = currencyDetails[code];
+            datalist.appendChild(option);
+        });
+        fromInp.value = "EUR";
+        toInp.value = "RON";
+        getRate();
+    }
+
+    async function getRate() {
+        const val = parseFloat(amtInp.value);
+        const f = fromInp.value.toUpperCase();
+        const t = toInp.value.toUpperCase();
+
+        if (!currencyDetails[f] || !currencyDetails[t]) return;
+        if (isNaN(val) || val <= 0) return;
+
+        // --- TRATARE ACEEAȘI MONEDĂ ---
+        if (f === t) {
+            resDisp.innerText = val.toLocaleString('ro-RO', {minimumFractionDigits: 2}) + " " + t;
+            rateDisp.innerText = `Rată fixă 1:1`;
+            
+            // Preluăm data de la server pentru a menține textul "Ultima actualizare a cursului" corect
+            try {
+                const res = await fetch(`https://api.frankfurter.app/latest`);
+                const data = await res.json();
+                const [year, month, day] = data.date.split('-');
+                dateDisp.innerText = `Sursă: BCE | Ultima actualizare a cursului: ${day}.${month}.${year}`;
+            } catch(e) { 
+                dateDisp.innerText = `Sursă: BCE | Ultima actualizare a cursului: --.--.----`;
+            }
+            return;
+        }
+        
+        try {
+            const res = await fetch(`https://api.frankfurter.app/latest?amount=${val}&from=${f}&to=${t}`);
+            const data = await res.json();
+            
+            const converted = data.rates[t];
+            resDisp.innerText = converted.toLocaleString('ro-RO', {minimumFractionDigits: 2}) + " " + t;
+            rateDisp.innerText = `1 ${f} = ${(converted/val).toFixed(4)} ${t}`;
+            
+            const [year, month, day] = data.date.split('-');
+            dateDisp.innerText = `Sursă: BCE | Ultima actualizare a cursului: ${day}.${month}.${year}`;
+
+        } catch (err) {
+            resDisp.innerText = "Eroare";
+            dateDisp.innerText = "Eroare conexiune server";
+        }
+    }
+
+    document.getElementById('btn').onclick = getRate;
+    document.getElementById('swap').onclick = () => {
+        const temp = fromInp.value; fromInp.value = toInp.value; toInp.value = temp;
+        getRate();
+    };
+
+    fromInp.oninput = getRate;
+    toInp.oninput = getRate;
+    amtInp.oninput = getRate;
+
+    init();
+</script>
+</body>
+</html>
